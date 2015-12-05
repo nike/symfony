@@ -65,5 +65,19 @@ abstract class Voter implements VoterInterface
      *
      * @return bool
      */
-    abstract protected function voteOnAttribute($attribute, $subject, TokenInterface $token);
+    protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
+    {
+        $this->shouldGiveAccess($attribute, $subject, $token);
+    }
+
+    /**
+     * Perform a single access check operation on a given attribute, subject and token.
+     *
+     * @param string         $attribute
+     * @param mixed          $subject
+     * @param TokenInterface $token
+     *
+     * @return bool
+     */
+    abstract protected function shouldGiveAccess($attribute, $subject, TokenInterface $token);
 }
